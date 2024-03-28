@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.uteev.convertoruteev.R
 import com.uteev.convertoruteev.ViewPagerAdapter
 
@@ -32,6 +33,18 @@ class RootFragment : Fragment() {
         val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout)
 
         viewPager.adapter = ViewPagerAdapter(ctx as FragmentActivity)
+        tabLayout.tabIconTint = null
+
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            when(position) {
+                0 -> {
+                    tab.setIcon(R.drawable.baseline_attach_money_24)
+                }
+                1 -> {
+                    tab.setIcon(R.drawable.round_add_24)
+                }
+            }
+        }.attach()
 
         return view
     }

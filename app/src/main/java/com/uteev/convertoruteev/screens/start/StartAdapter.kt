@@ -7,38 +7,38 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.uteev.convertoruteev.R
-import com.uteev.convertoruteev.model.cash.SpecificCurrency
-
-
+import com.uteev.convertoruteev.model.cash.Currency
+import com.uteev.convertoruteev.model.cash.CurrencyResponse
 
 class StartAdapter : RecyclerView.Adapter<StartAdapter.StartViewHolder>() {
-    var listStart = emptyList<SpecificCurrency>()
 
-
-    class StartViewHolder(val view : View) : RecyclerView.ViewHolder (view) {
-        val itemName = view.findViewById<TextView>(R.id.item_name)
-        val itemValues = view.findViewById<TextView>(R.id.item_values)
-        val itemPrevious = view.findViewById<TextView>(R.id.item_previous)
+    private var currencyMap = emptyMap<String, Currency>()
+    inner class StartViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+        val itemName : TextView = itemView.findViewById(R.id.item_name)
+        val itemValues : TextView = itemView.findViewById(R.id.item_values)
+        val itemPrevious : TextView = itemView.findViewById(R.id.item_previous)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StartViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_money_layout, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_money_layout, parent, false)
         return StartViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return listStart.size
+        return currencyMap.size
     }
 
     override fun onBindViewHolder(holder: StartViewHolder, position: Int) {
-        holder.itemName.text = listStart[position].Name
-        holder.itemValues.text = listStart[position].Value.toString()
-        holder.itemPrevious.text = listStart[position].Previous.toString()
+        val currencyCode = currencyMap.keys.elementAt(position)
+        val currency = currencyMap[currencyCode]
+        holder.itemName.text = currency?.Name ?: ""
+        holder.itemValues.text = currency?.Value.toString()
+        holder.itemPrevious.text = currency?.Previous.toString()
     }
-
     @SuppressLint("NotifyDataSetChanged")
-    private fun setList(list: List<SpecificCurrency>) {
-        listStart = list
+    fun setMap(currencyResponse: CurrencyResponse) {
+        currencyMap = currencyResponse.Valute
         notifyDataSetChanged()
     }
 
