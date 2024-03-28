@@ -37,6 +37,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     val room_version = "2.6.1"
     val lifecycle_version = "2.7.0"
     val arch_version = "2.2.0"
