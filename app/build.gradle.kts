@@ -69,4 +69,8 @@ dependencies {
     implementation("androidx.room:room-paging:$room_version")
     // Picassso
     implementation ("com.squareup.picasso:picasso:2.8")
+    // okhttp 3
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    // coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
 }
