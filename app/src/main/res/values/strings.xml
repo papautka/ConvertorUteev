@@ -2,4 +2,11 @@
     <string name="app_name">ConvertorUteev</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="splash">Splash</string>
+    <string name="name">Название:</string>
+    <string name="purchase">Закупака:</string>
+    <string name="sale">Продажа:</string>
+    <string name="tmpnominalsell">tmpNominalSell</string>
+    <string name="tmpnominalbuy">tmpNominalBuy</string>
+    <string name="tmpusd">tmpUSD</string>
 </resources>
